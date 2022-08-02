@@ -8,8 +8,8 @@
     When a finger is read, the script will trigger the external script 'on_match_success.sh' if a match is found,
     and 'on_match_failed.sh' if no match is found.
 
-    The script on_match_success.sh will receive two parameters, the first beeing the matching score and the second
-    the finger template position in module memory.
+    The script on_match_success.sh will receive two parameters, the first beeing the finger template position in module memory
+    and the second beeing the matching score.
 
     When triggering external scripts, the program wait for the scripts to finish.
 """
@@ -69,11 +69,10 @@ while True :
             print('Trigger script : {}'.format(ON_MATCH_SUCCESS_SCRIPT))
             subprocess.call([ON_MATCH_SUCCESS_SCRIPT, str(accuracy_score), str(template_position)])
 
-        # Wait for two second before reading another finger
-        sleep(2)
-
-
     except Exception as e:
         print('Operation failed!')
         print('Exception message: '.format(e))
-        exit(1)
+
+    finally :
+        # Wait for two second before reading another finger
+        sleep(2)
