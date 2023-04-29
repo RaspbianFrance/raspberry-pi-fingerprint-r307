@@ -1,2 +1,2 @@
 #!/usr/bin/bash
-echo "Finger match finger at position #$1 with a score of $2"
+echo "Finger match finger at position #$2 with a score of $1"
